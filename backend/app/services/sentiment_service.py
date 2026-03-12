@@ -1,5 +1,7 @@
 import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "sentiment-engine"))
+root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+sys.path.insert(0, root_path)
+sys.path.insert(0, os.path.join(root_path, "sentiment-engine"))
 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from textblob import TextBlob
