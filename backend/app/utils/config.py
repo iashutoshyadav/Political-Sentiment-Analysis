@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 60
     database_url: str = "sqlite:///./political_news.db"
-    cors_origins: str = "http://localhost:5173,http://localhost:3000,https://political-sentiment-analysis.vercel.app"
+    cors_origins: str = "http://localhost:5173,http://localhost:3000,https://political-sentiment-analysis.vercel.app,https://political-sentiment-analysis.vercel.app/,https://political-sentiment-analysis-seven.vercel.app,https://political-sentiment-analysis-git-main-iashutoshyadavs-projects.vercel.app"
 
     @property
     def cors_origins_list(self) -> list[str]:

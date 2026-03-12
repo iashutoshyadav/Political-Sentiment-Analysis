@@ -5,7 +5,6 @@ sys.path.insert(0, os.path.join(root_path, "sentiment-engine"))
 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from textblob import TextBlob
-from transformers import pipeline
 
 vader_analyzer = SentimentIntensityAnalyzer()
 
@@ -17,6 +16,9 @@ def get_bert_analyzer():
     global _bert_analyzer
     if _bert_analyzer is None:
         try:
+            # Import transformers only when needed to save ~300MB of startup RAM
+            from transformers import pipeline
+            
             # Using TinyBERT for extreme memory efficiency on Render Free Tier
             _bert_analyzer = pipeline(
                 "sentiment-analysis",
