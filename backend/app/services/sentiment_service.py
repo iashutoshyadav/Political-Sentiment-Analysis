@@ -5,10 +5,14 @@ sys.path.insert(0, os.path.join(root_path, "sentiment-engine"))
 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from textblob import TextBlob
-from transformers import pipeline
-
 vader_analyzer = SentimentIntensityAnalyzer()
-bert_analyzer = pipeline("sentiment-analysis", model="cardiffnlp/twitter-roberta-base-sentiment-latest", truncation=True, max_length=512)
+bert_analyzer = pipeline(
+    "sentiment-analysis", 
+    model="distilbert-base-uncased-finetuned-sst-2-english", 
+    truncation=True, 
+    max_length=512,
+    device=-1 # Ensure CPU
+)
 
 CONTEXT_POSITIVE_KEYWORDS = [
     "win", "victory", "majority", "support", 
