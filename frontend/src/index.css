@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #020617;
+  --color-surface: #0f172a;
+  --color-card: #1e293b;
+  --color-border: #334155;
+  --color-text: #f1f5f9;
+  --color-muted: #64748b;
+  --color-primary: #3b82f6;
+  --color-positive: #22c55e;
+  --color-neutral: #f59e0b;
+  --color-negative: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+@layer components {
+  .glass {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+  }
+
+  .glass-light {
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(51, 65, 85, 0.4);
+  }
+
+  .card {
+    @apply glass rounded-2xl p-5 shadow-xl;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply glass text-slate-200 hover:bg-slate-700 font-medium px-5 py-2.5 rounded-xl transition-all duration-200 border border-slate-600 hover:border-slate-500;
+  }
+
+  .btn-danger {
+    @apply bg-red-600/90 hover:bg-red-500 text-white font-semibold px-5 py-2.5 rounded-xl transition-all duration-200;
+  }
+
+  .input-field {
+    @apply w-full bg-slate-800/60 border border-slate-600 text-slate-100 placeholder-slate-500 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200;
+  }
+
+  .select-field {
+    @apply w-full bg-slate-800/60 border border-slate-600 text-slate-100 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 cursor-pointer;
+  }
+
+  .stat-card {
+    @apply glass rounded-2xl p-5 flex items-center gap-4 hover:border-blue-500/30 transition-all duration-300;
+  }
+
+  .page-header {
+    @apply text-3xl font-bold text-white mb-2;
+  }
+
+  .page-subheader {
+    @apply text-slate-400 text-sm mb-8;
+  }
+
+  .badge-positive {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-400 border border-green-500/30;
+  }
+
+  .badge-neutral {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-400 border border-amber-500/30;
+  }
+
+  .badge-negative {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-red-500/20 text-red-400 border border-red-500/30;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-2 px-4 py-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-all duration-200 text-sm font-medium;
+  }
+
+  .nav-link-active {
+    @apply flex items-center gap-2 px-4 py-2 rounded-xl text-white bg-blue-600/20 border border-blue-500/30 text-sm font-semibold;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Gradient backgrounds */
+.hero-gradient {
+  background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%);
+}
+
+.chart-container {
+  @apply glass rounded-2xl p-6;
+}
+
+/* Loading animation */
+.shimmer {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}

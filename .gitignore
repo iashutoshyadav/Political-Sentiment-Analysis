@@ -1,0 +1,32 @@
+# Ignore Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+*.dist-info/
+backend/.venv/
+backend/*.db
+*.db
+
+# Database (keep schema, ignore data)
+database/political_news.db
+
+# Node
+node_modules/
+frontend/dist/
+# Env
+.env
+backend/.env
+frontend/.env
+*.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
