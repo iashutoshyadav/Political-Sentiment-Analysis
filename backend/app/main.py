@@ -1,5 +1,10 @@
 import os
 import sys
+
+backend_root = os.path.dirname(os.path.abspath(__file__))
+if backend_root not in sys.path:
+    sys.path.insert(0, backend_root)
+
 import nltk
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
