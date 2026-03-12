@@ -5,6 +5,8 @@ sys.path.insert(0, os.path.join(root_path, "sentiment-engine"))
 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from textblob import TextBlob
+from transformers import pipeline
+
 vader_analyzer = SentimentIntensityAnalyzer()
 bert_analyzer = pipeline(
     "sentiment-analysis", 
