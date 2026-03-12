@@ -3,20 +3,22 @@ root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", 
 sys.path.insert(0, root_path)
 sys.path.insert(0, os.path.join(root_path, "sentiment-engine"))
 
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-from textblob import TextBlob
-
-vader_analyzer = SentimentIntensityAnalyzer()
-
-# Lazy loading the BERT model to save memory during startup
-# Using TinyBERT (~18MB) instead of DistilBERT (~260MB) for extreme memory saving
+# Lazy-loaded Analyzers
+_vader_analyzer = None
 _bert_analyzer = None
+
+def get_vader_analyzer():
+    global _vader_analyzer
+    if _vader_analyzer is None:
+        from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+        _vader_analyzer = SentimentIntensityAnalyzer()
+    return _vader_analyzer
 
 def get_bert_analyzer():
     global _bert_analyzer
     if _bert_analyzer is None:
         try:
-            # Import transformers only when needed to save ~300MB of startup RAM
+            # Import transformers only when needed to save startup RAM
             from transformers import pipeline
             
             # Using TinyBERT for extreme memory efficiency on Render Free Tier
@@ -49,9 +51,11 @@ def analyze_sentiment(text: str, party: str = None) -> dict:
             "textblob_score": 0.0, "bert_score": 0.0, "adjusted_score": 0.0
         }
     
+    vader_analyzer = get_vader_analyzer()
     vader_scores = vader_analyzer.polarity_scores(text)
     vader_compound = vader_scores["compound"]
     
+    from textblob import TextBlob
     tb = TextBlob(text)
     tb_polarity = tb.sentiment.polarity
     
