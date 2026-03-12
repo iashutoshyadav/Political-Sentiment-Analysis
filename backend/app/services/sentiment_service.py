@@ -8,16 +8,30 @@ from textblob import TextBlob
 from transformers import pipeline
 
 vader_analyzer = SentimentIntensityAnalyzer()
-bert_analyzer = pipeline(
-    "sentiment-analysis", 
-    model="distilbert-base-uncased-finetuned-sst-2-english", 
-    truncation=True, 
-    max_length=512,
-    device=-1 # Ensure CPU
-)
+
+# Lazy loading the BERT model to save memory during startup
+# Using TinyBERT (~18MB) instead of DistilBERT (~260MB) for extreme memory saving
+_bert_analyzer = None
+
+def get_bert_analyzer():
+    global _bert_analyzer
+    if _bert_analyzer is None:
+        try:
+            # Using TinyBERT for extreme memory efficiency on Render Free Tier
+            _bert_analyzer = pipeline(
+                "sentiment-analysis",
+                model="mrm8488/tinybert-finetuned-sentiment-analysis",
+                truncation=True,
+                max_length=512,
+                device=-1 # Ensure CPU
+            )
+        except Exception as e:
+            print(f"Warning: Could not load BERT analyzer: {e}. Falling back to VADER/TextBlob.")
+            return None
+    return _bert_analyzer
 
 CONTEXT_POSITIVE_KEYWORDS = [
-    "win", "victory", "majority", "support", 
+    "win", "victory", "majority", "support",
     "success", "development", "approval"
 ]
 
@@ -39,13 +53,20 @@ def analyze_sentiment(text: str, party: str = None) -> dict:
     tb = TextBlob(text)
     tb_polarity = tb.sentiment.polarity
     
-    bert_result = bert_analyzer(text)[0]
-    bert_label = bert_result['label'].lower()
-    
-    if bert_label == 'positive':
-        bert_score = bert_result['score']
-    elif bert_label == 'negative':
-        bert_score = -bert_result['score']
+    bert_analyzer = get_bert_analyzer()
+    if bert_analyzer:
+        try:
+            bert_result = bert_analyzer(text)[0]
+            bert_label = bert_result['label'].lower()
+            
+            if bert_label == 'label_1' or bert_label == 'positive': # Adjusting for TinyBERT label names
+                bert_score = bert_result['score']
+            elif bert_label == 'label_0' or bert_label == 'negative':
+                bert_score = -bert_result['score']
+            else:
+                bert_score = 0.0
+        except Exception:
+            bert_score = 0.0
     else:
         bert_score = 0.0
     
