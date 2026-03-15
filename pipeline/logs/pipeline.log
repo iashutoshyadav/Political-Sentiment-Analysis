@@ -1,0 +1,34 @@
+[2026-03-15 21:23:19] ==================================================
+[2026-03-15 21:23:19] PolitiSense Self-Improving Pipeline
+[2026-03-15 21:23:19] ==================================================
+[2026-03-15 21:23:19] Running step1_collect.py...
+[2026-03-15 21:23:33]   step1_collect.py completed OK
+[2026-03-15 21:23:33] Running step2_label.py...
+[2026-03-15 21:23:35]   step2_label.py completed OK
+[2026-03-15 21:23:35] Running step3_check_retrain.py...
+[2026-03-15 21:23:58]   step3_check_retrain.py completed OK
+[2026-03-15 21:23:58] 
+Pipeline Summary:
+[2026-03-15 21:23:58]   Total articles collected: 272
+[2026-03-15 21:23:58]   Labeled:                  272
+[2026-03-15 21:23:58]   In training pool:         189
+[2026-03-15 21:23:58]   Already trained on:       0
+[2026-03-15 21:23:58]   Steps: collect=OK label=OK retrain=OK
+[2026-03-15 21:23:58] Pipeline run complete.
+[2026-03-16 00:00:04] ==================================================
+[2026-03-16 00:00:04] PolitiSense Self-Improving Pipeline
+[2026-03-16 00:00:04] ==================================================
+[2026-03-16 00:00:04] Running step1_collect.py...
+[2026-03-16 00:00:46]   step1_collect.py completed OK
+[2026-03-16 00:00:46] Running step2_label.py...
+[2026-03-16 00:01:09]   step2_label.py completed OK
+[2026-03-16 00:01:09] Running step3_check_retrain.py...
+[2026-03-16 00:01:40]   step3_check_retrain.py completed OK
+[2026-03-16 00:01:40] 
+Pipeline Summary:
+[2026-03-16 00:01:40]   Total articles collected: 611
+[2026-03-16 00:01:40]   Labeled:                  611
+[2026-03-16 00:01:40]   In training pool:         469
+[2026-03-16 00:01:40]   Already trained on:       0
+[2026-03-16 00:01:40]   Steps: collect=OK label=OK retrain=OK
+[2026-03-16 00:01:40] Pipeline run complete.
