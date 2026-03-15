@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --color-bg: #020617;
-  --color-surface: #0f172a;
-  --color-card: #1e293b;
-  --color-border: #334155;
-  --color-text: #f1f5f9;
-  --color-muted: #64748b;
-  --color-primary: #3b82f6;
-  --color-positive: #22c55e;
+  --color-bg: #f5f5f3;
+  --color-surface: #ffffff;
+  --color-card: #ffffff;
+  --color-border: #e8e8e4;
+  --color-text: #111111;
+  --color-muted: #5d5d5d;
+  --color-primary: #f59e0b;
+  --color-positive: #10b981;
   --color-neutral: #f59e0b;
   --color-negative: #ef4444;
 }
@@ -31,72 +31,127 @@ body {
 
 @layer components {
   .glass {
-    background: rgba(30, 41, 59, 0.7);
+    background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(51, 65, 85, 0.6);
+    border: 1px solid rgba(228, 228, 222, 0.6);
+    @apply shadow-sm;
   }
 
   .glass-light {
-    background: rgba(15, 23, 42, 0.5);
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(51, 65, 85, 0.4);
+    border: 1px solid rgba(228, 228, 222, 0.4);
   }
 
   .card {
-    @apply glass rounded-2xl p-5 shadow-xl;
+    background: var(--color-surface);
+    @apply rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-chalk-200;
   }
 
   .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply bg-orange-600 hover:bg-orange-500 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/25 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .btn-secondary {
-    @apply glass text-slate-200 hover:bg-slate-700 font-medium px-5 py-2.5 rounded-xl transition-all duration-200 border border-slate-600 hover:border-slate-500;
+    @apply bg-white text-dark-950 hover:bg-chalk-100 font-medium px-5 py-2.5 rounded-xl transition-all duration-200 border border-chalk-300 hover:border-chalk-400;
   }
 
   .btn-danger {
-    @apply bg-red-600/90 hover:bg-red-500 text-white font-semibold px-5 py-2.5 rounded-xl transition-all duration-200;
+    @apply bg-red-600 hover:bg-red-500 text-white font-semibold px-5 py-2.5 rounded-xl transition-all duration-200;
   }
 
   .input-field {
-    @apply w-full bg-slate-800/60 border border-slate-600 text-slate-100 placeholder-slate-500 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200;
+    @apply w-full bg-white border border-chalk-300 text-dark-950 placeholder-dark-400 rounded-xl px-4 py-3 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/10 transition-all duration-200;
   }
 
   .select-field {
-    @apply w-full bg-slate-800/60 border border-slate-600 text-slate-100 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 cursor-pointer;
+    @apply w-full bg-white border border-chalk-300 text-dark-950 rounded-xl px-4 py-3 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/10 transition-all duration-200 cursor-pointer;
   }
 
   .stat-card {
-    @apply glass rounded-2xl p-5 flex items-center gap-4 hover:border-blue-500/30 transition-all duration-300;
+    @apply bg-white rounded-2xl p-5 flex items-center gap-4 border border-chalk-200 hover:border-orange-500/30 transition-all duration-300 shadow-sm hover:shadow-md;
   }
 
   .page-header {
-    @apply text-3xl font-bold text-white mb-2;
+    @apply text-3xl font-bold text-dark-950 mb-2;
   }
 
   .page-subheader {
-    @apply text-slate-400 text-sm mb-8;
+    @apply text-dark-500 text-sm mb-8;
   }
 
   .badge-positive {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-400 border border-green-500/30;
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700 border border-green-200;
   }
 
   .badge-neutral {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-400 border border-amber-500/30;
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-700 border border-orange-200;
   }
 
   .badge-negative {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-red-500/20 text-red-400 border border-red-500/30;
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700 border border-red-200;
   }
 
   .nav-link {
-    @apply flex items-center gap-2 px-4 py-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-all duration-200 text-sm font-medium;
+    @apply flex items-center gap-2 px-4 py-2 rounded-xl text-dark-500 hover:text-dark-950 hover:bg-chalk-100 transition-all duration-200 text-sm font-medium;
   }
 
   .nav-link-active {
-    @apply flex items-center gap-2 px-4 py-2 rounded-xl text-white bg-blue-600/20 border border-blue-500/30 text-sm font-semibold;
+    @apply flex items-center gap-2 px-4 py-2 rounded-xl text-orange-700 bg-orange-50 border border-orange-200 text-sm font-semibold;
+  }
+  .mesh-gradient {
+    background-color: #f5f5f3;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(245, 158, 11, 0.1) 0px, transparent 50%),
+      radial-gradient(at 50% 0%, rgba(251, 146, 60, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.1) 0px, transparent 50%);
+  }
+
+  .noise-overlay {
+    position: relative;
+  }
+
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    filter: contrast(120%) brightness(100%);
+  }
+
+  .editorial-heading {
+    @apply font-serif italic tracking-tight leading-[0.85];
+  }
+  .blueprint-grid {
+    background-size: 80px 80px;
+    background-image: 
+      linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+  }
+
+  .blueprint-grid-subtle {
+    background-size: 20px 20px;
+    background-image: 
+      linear-gradient(to right, rgba(0,0,0,0.015) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,0.015) 1px, transparent 1px);
+  }
+
+  .mesh-gradient-dark {
+    background: radial-gradient(at 0% 0%, rgba(245,158,11,0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0,0,0,0.05) 0px, transparent 50%),
+                #ffffff;
+  }
+
+  .glass-luxury {
+    @apply bg-white/40 backdrop-blur-2xl border border-white/40 shadow-2xl;
+  }
+
+  .coord-label {
+    @apply absolute text-[8px] font-mono text-dark-300 pointer-events-none uppercase;
   }
 }
 
@@ -106,7 +161,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-surface);
+  background: var(--color-bg);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -115,21 +170,21 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #d5d5cd;
 }
 
 /* Gradient backgrounds */
 .hero-gradient {
-  background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%);
+  background: radial-gradient(circle at top left, #fff7ed 0%, #fafaf8 50%, #fafaf8 100%);
 }
 
 .chart-container {
-  @apply glass rounded-2xl p-6;
+  @apply bg-white rounded-2xl p-6 border border-chalk-200 shadow-sm;
 }
 
 /* Loading animation */
 .shimmer {
-  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background: linear-gradient(90deg, #fafaf8 25%, #f5f5f2 50%, #fafaf8 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }

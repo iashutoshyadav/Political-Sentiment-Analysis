@@ -9,7 +9,7 @@ const NAV_LINKS = [
     { path: '/reports', label: 'Reports', icon: <FileText className="w-4 h-4" /> },
 ];
 
-export default function Navbar() {
+export default function Navbar({ onOpenAuth }) {
     const { user, logout } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
@@ -17,53 +17,78 @@ export default function Navbar() {
 
     const handleLogout = () => {
         logout();
-        navigate('/login');
+        navigate('/');
     };
 
     return (
-        <nav className="glass sticky top-0 z-50 border-b border-slate-700/50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
-                    {/* Logo */}
-                    <Link to="/dashboard" className="flex items-center gap-3 group">
-                        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center text-lg text-white shadow-lg group-hover:shadow-blue-500/25 transition-shadow">
-                            <Newspaper className="w-5 h-5" />
+        <nav className="glass sticky top-0 z-50 border-b border-chalk-200/50 bg-[#fff7ed]/80 backdrop-blur-xl noise-overlay blueprint-grid-subtle h-16 flex items-center">
+            <div className="w-full px-6 lg:px-12">
+                <div className="flex items-center justify-between">
+                    {/* Logo - Refined Architectural Branding */}
+                    <Link to={user ? "/dashboard" : "/"} className="flex items-center gap-3 group relative">
+                        <div className="absolute -top-5 -left-1 text-[5px] font-mono text-primary-500 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">AUTH / PROT-X</div>
+                        <div className="w-8 h-8 bg-dark-950 flex items-center justify-center relative overflow-hidden group-hover:bg-primary-600 transition-colors duration-500">
+                            <Newspaper className="w-4 h-4 text-white relative z-10" />
+                            <div className="absolute inset-x-0 h-[100%] top-0 bg-gradient-to-t from-white/20 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-700" />
                         </div>
                         <div className="hidden sm:block">
-                            <p className="text-sm font-bold text-white leading-none">PolitiSense</p>
-                            <p className="text-xs text-slate-500 leading-none">Sentiment Analysis</p>
+                            <p className="text-lg font-serif italic text-dark-950 leading-none tracking-tighter">PolitiSense<span className="text-primary-600">.</span></p>
+                            <p className="text-[6px] font-mono text-dark-400 uppercase tracking-[0.4em] mt-1 font-black">Intelligence / Ensemble</p>
                         </div>
                     </Link>
 
-                    {/* Desktop nav */}
-                    <div className="hidden md:flex items-center gap-1">
-                        {NAV_LINKS.map(({ path, label, icon }) => (
+                    {/* Desktop nav - Editorial spacing */}
+                    <div className="hidden md:flex items-center gap-12">
+                        {user && NAV_LINKS.map(({ path, label, icon }) => (
                             <Link key={path} to={path}
-                                className={location.pathname === path ? 'nav-link-active' : 'nav-link'}>
-                                <span>{icon}</span>
-                                <span>{label}</span>
+                                className={`group relative py-2 flex items-center gap-2 text-[10px] uppercase font-black tracking-[0.3em] transition-all duration-300 ${
+                                    location.pathname === path ? 'text-primary-600' : 'text-dark-400 hover:text-dark-950'
+                                }`}>
+                                <span className="text-chalk-300 group-hover:text-primary-400 font-mono text-[7px] opacity-50">0{NAV_LINKS.indexOf({path, label, icon}) +1}</span>
+                                {label}
+                                {location.pathname === path && (
+                                    <div className="absolute -bottom-6 left-0 w-full h-0.5 bg-primary-500" />
+                                )}
                             </Link>
                         ))}
                     </div>
 
                     {/* Right side */}
                     <div className="flex items-center gap-3">
-                        {user && (
-                            <div className="hidden sm:flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-violet-500 flex items-center justify-center text-xs font-bold text-white">
-                                    {user.username?.[0]?.toUpperCase()}
+                        {user ? (
+                            <>
+                                <div className="hidden sm:flex items-center gap-2">
+                                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-xs font-bold text-white">
+                                        {user.username?.[0]?.toUpperCase()}
+                                    </div>
+                                    <span className="text-sm text-dark-800 font-medium">{user.username}</span>
                                 </div>
-                                <span className="text-sm text-slate-300 font-medium">{user.username}</span>
+                                <button onClick={handleLogout}
+                                    className="flex items-center gap-2 text-xs text-dark-500 hover:text-red-600 border border-chalk-300 hover:border-red-200 px-3 py-2 rounded-xl transition-all duration-200">
+                                    <LogOut className="w-4 h-4" />
+                                    <span className="hidden sm:inline">Logout</span>
+                                </button>
+                            </>
+                        ) : (
+                            <div className="flex items-center gap-8">
+                                <button
+                                    onClick={() => onOpenAuth('login')}
+                                    className="text-[9px] font-black text-dark-950 uppercase tracking-[0.3em] hover:text-primary-600 transition-colors border-b border-transparent hover:border-primary-600 pb-0.5"
+                                >
+                                    Login
+                                </button>
+                                <button
+                                    onClick={() => onOpenAuth('signup')}
+                                    className="bg-dark-950 text-white px-8 py-3 transition-all font-serif italic text-sm hover:bg-dark-800 relative group overflow-hidden"
+                                >
+                                    <span className="relative z-10">Sign Up</span>
+                                    <div className="absolute inset-x-0 h-[100%] top-0 bg-gradient-to-t from-primary-500/20 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-700" />
+                                </button>
                             </div>
                         )}
-                        <button onClick={handleLogout}
-                            className="flex items-center gap-2 text-xs text-slate-400 hover:text-red-400 border border-slate-700 hover:border-red-500/50 px-3 py-2 rounded-xl transition-all duration-200">
-                            <LogOut className="w-4 h-4" />
-                            <span className="hidden sm:inline">Logout</span>
-                        </button>
                         {/* Mobile menu */}
                         <button onClick={() => setMenuOpen(!menuOpen)}
-                            className="md:hidden text-slate-400 hover:text-white p-2 rounded-lg transition-colors">
+                            className="md:hidden text-dark-500 hover:text-dark-950 p-2 rounded-lg transition-colors">
                             {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                         </button>
                     </div>
