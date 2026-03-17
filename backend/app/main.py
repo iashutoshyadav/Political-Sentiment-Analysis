@@ -20,9 +20,9 @@ def download_nltk_data():
     packages = ["vader_lexicon", "punkt", "brown", "averaged_perceptron_tagger"]
     for pkg in packages:
         try:
+            nltk.data.find(pkg)
+        except LookupError:
             nltk.download(pkg, quiet=True)
-        except Exception:
-            pass
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
