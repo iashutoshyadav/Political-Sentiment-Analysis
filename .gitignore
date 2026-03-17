@@ -31,6 +31,9 @@ Thumbs.db
 .idea/
 *.swp
 
+*.pt
+*.json
+
 sentiment-engine/data/politisense_1lakh.pt
 sentiment-engine/data/vocab_1lakh.json
 pipeline/pipeline.db
