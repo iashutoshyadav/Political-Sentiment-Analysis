@@ -1,3 +1,12 @@
+---
+title: PolitiSense Backend
+emoji: 🚀
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_file: backend/app/main.py
+pinned: false
+---
 # 🗞 PolitiSense — High-Fidelity Political Intelligence
 
 PolitiSense is a sophisticated, architectural-grade sentiment analysis system designed to decode the complex narratives and hidden geometries of Indian political discourse. Utilizing a high-fidelity ensemble intelligence, it provides deep insights into media sentiment across various parties and regions.
