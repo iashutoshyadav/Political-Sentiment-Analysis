@@ -21,7 +21,7 @@ export default function Navbar({ onOpenAuth }) {
     };
 
     return (
-        <nav className="glass sticky top-0 z-50 border-b border-chalk-200/50 bg-[#fff7ed]/80 backdrop-blur-xl noise-overlay blueprint-grid-subtle h-16 flex items-center">
+        <nav className="glass sticky top-0 z-50 border-b border-chalk-200/50 bg-[#fff7ed]/80 backdrop-blur-xl noise-overlay blueprint-grid-subtle h-14 flex items-center">
             <div className="w-full px-6 lg:px-12">
                 <div className="flex items-center justify-between">
                     {/* Logo - Refined Architectural Branding */}

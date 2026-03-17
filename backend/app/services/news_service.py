@@ -120,6 +120,7 @@ def get_mock_articles(party: str, state: str = None, count: int = 10) -> list:
             "published_at": pub_date.isoformat() + "Z",
             "party": party,
             "state": state or "All States",
+            "urlToImage": f"https://picsum.photos/seed/{party}-{i}/800/450",
         })
         
     return result

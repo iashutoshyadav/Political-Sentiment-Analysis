@@ -8,10 +8,10 @@ const FeatureCard = ({ icon: Icon, title, description, delay }) => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
-        className="group relative p-12 border-l border-chalk-200/50 hover:border-primary-500 transition-colors duration-500 bg-white/30 backdrop-blur-sm"
+        className="group relative p-8 border-l border-chalk-200/50 hover:border-primary-500 transition-colors duration-500 bg-white/30 backdrop-blur-sm"
     >
-        <div className="absolute top-4 right-4 text-[7px] font-mono text-chalk-200 group-hover:text-primary-300 transition-colors">FEAT-CORE-0{Math.floor(delay * 10)}</div>
-        <div className="w-12 h-12 mb-10 text-dark-900 group-hover:text-primary-600 group-hover:scale-110 transition-all duration-500">
+        <div className="absolute top-3 right-4 text-[7px] font-mono text-chalk-200 group-hover:text-primary-300 transition-colors">FEAT-CORE-0{Math.floor(delay * 10)}</div>
+        <div className="w-10 h-10 mb-6 text-dark-900 group-hover:text-primary-600 group-hover:scale-110 transition-all duration-500">
             <Icon size={32} strokeWidth={1} />
         </div>
         <h3 className="text-3xl font-serif italic text-dark-950 mb-6 group-hover:text-primary-700 transition-colors">{title}</h3>
@@ -60,7 +60,7 @@ export default function Home({ onOpenAuth }) {
             <div className="absolute top-32 right-[20%] translate-x-1/2 text-[6px] font-mono text-chalk-300 uppercase tracking-widest bg-[#fff7ed] px-1">90° DEG / HOR</div>
 
             {/* Hero Section - Cinematic Layout */}
-            <section className="min-h-screen flex items-center pt-20 pb-32 px-6 lg:px-12 relative overflow-hidden border-b border-chalk-200/50">
+            <section className="min-h-[80vh] flex items-center pt-16 pb-20 px-6 lg:px-12 relative overflow-hidden border-b border-chalk-200/50">
                 {/* Visual Anchors (Coordinates) */}
                 <div className="absolute top-32 left-8 text-[8px] font-mono text-dark-300 uppercase tracking-widest vertical-rl">48.2082° N, 16.3738° E</div>
                 <div className="absolute top-32 right-8 text-[8px] font-mono text-dark-300 uppercase tracking-widest vertical-rl">ARCH / LOGIC: V12.8</div>
@@ -99,11 +99,14 @@ export default function Home({ onOpenAuth }) {
                                     onClick={() => onOpenAuth('signup')}
                                     className="bg-dark-950 text-white px-12 py-5 transition-all font-serif italic text-xl hover:bg-dark-800 relative group overflow-hidden"
                                 >
-                                    <span className="relative z-10">Initialise Analysis</span>
+                                    Initialise Analysis
                                     <div className="absolute inset-x-0 h-[100%] top-0 bg-gradient-to-b from-primary-500/20 to-transparent -translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-out" />
                                     <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                                 </button>
-                                <button className="text-sm font-black text-dark-950 uppercase tracking-[0.3em] border-b border-dark-950 pb-1 self-start hover:text-primary-600 hover:border-primary-600 transition-colors">
+                                <button 
+                                    onClick={() => onOpenAuth('signup')}
+                                    className="text-sm font-black text-dark-950 uppercase tracking-[0.3em] border-b border-dark-950 pb-1 self-start hover:text-primary-600 hover:border-primary-600 transition-colors"
+                                >
                                     Browse Protocols
                                 </button>
                             </motion.div>
@@ -166,7 +169,7 @@ export default function Home({ onOpenAuth }) {
                 </div>
             </section>
 
-            <section className="py-24 border-y border-chalk-200 bg-white relative z-20">
+            <section className="py-16 border-y border-chalk-200 bg-white relative z-20">
                 <div className="w-full px-6 lg:px-12 grid grid-cols-2 md:grid-cols-4 gap-12">
                     {[
                         { label: 'Protocols Active', value: '03', serial: 'PR-82' },
@@ -185,11 +188,11 @@ export default function Home({ onOpenAuth }) {
             </section>
 
             {/* Features Grid - Editorial Layout */}
-            <section className="py-40 px-6 lg:px-12 bg-white border-y border-chalk-200">
+            <section className="py-24 px-6 lg:px-12 bg-white border-y border-chalk-200">
                 <div className="w-full">
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
                         <div className="max-w-xl">
-                            <h2 className="text-6xl font-serif italic text-dark-950 mb-6">Foundations of Insight.</h2>
+                            <h2 className="text-5xl font-serif italic text-dark-950 mb-4">Foundations of Insight.</h2>
                             <p className="text-dark-500 text-lg font-light leading-relaxed">Our infrastructure is built for depth, scale, and uncompromising accuracy in the political domain.</p>
                         </div>
                         <div className="text-[10px] font-black text-primary-600 uppercase tracking-[0.4em] mb-2">Capabilities / 001</div>
@@ -218,7 +221,7 @@ export default function Home({ onOpenAuth }) {
             </section>
 
             {/* The Models (Technical Section) - Dossier Style */}
-            <section className="py-40 px-6 lg:px-12 relative">
+            <section className="py-24 px-6 lg:px-12 relative">
                 <div className="w-full">
                     <div className="grid lg:grid-cols-2 gap-24 items-start">
                         <div className="sticky top-32">
@@ -281,7 +284,7 @@ export default function Home({ onOpenAuth }) {
             </section>
 
             {/* CTA Section - Minimalist Editorial */}
-            <section className="py-48 px-6 lg:px-12 bg-white text-center border-t border-chalk-200">
+            <section className="py-32 px-6 lg:px-12 bg-white text-center border-t border-chalk-200">
                 <div className="max-w-4xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}

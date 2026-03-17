@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className="border-t border-chalk-300 bg-chalk-100 noise-overlay blueprint-grid relative z-20 py-4">
+        <footer className="border-t border-chalk-300 bg-chalk-100 noise-overlay blueprint-grid relative z-20 py-8 mt-10">
             <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
                 <div className="flex flex-col md:flex-row items-start justify-between gap-8 mb-4">
                     <div className="space-y-3">
