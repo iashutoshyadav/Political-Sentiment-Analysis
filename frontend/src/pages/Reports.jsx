@@ -85,26 +85,26 @@ export default function Reports() {
                         <table className="w-full text-sm">
                             <thead>
                                 <tr className="border-b border-chalk-100 bg-[#fffcf8]">
-                                    <th className="text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">ID</th>
+                                    <th className="hidden md:table-cell text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">ID</th>
                                     <th className="text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Entity_Party</th>
-                                    <th className="text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Geo_State</th>
+                                    <th className="hidden lg:table-cell text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Geo_State</th>
                                     <th className="text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Signal_Type</th>
-                                    <th className="text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Dist_Ratio</th>
+                                    <th className="hidden sm:table-cell text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Dist_Ratio</th>
                                     <th className="text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Index</th>
-                                    <th className="text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Timestamp</th>
+                                    <th className="hidden md:table-cell text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Timestamp</th>
                                     <th className="text-right px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Export_PDF</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {history.map((a, i) => (
                                     <tr key={a.id} className="border-b border-chalk-50 hover:bg-[#fffbf6] transition-colors group">
-                                        <td className="px-8 py-4 text-dark-300 text-[10px] font-mono">LOG_{String(i + 1).padStart(3, '0')}</td>
+                                        <td className="hidden md:table-cell px-8 py-4 text-dark-300 text-[10px] font-mono">LOG_{String(i + 1).padStart(3, '0')}</td>
                                         <td className="px-8 py-4 font-serif italic text-dark-950 group-hover:text-primary-600 transition-colors">{a.party}</td>
-                                        <td className="px-8 py-4 text-dark-500 font-light italic text-[13px]">{a.state || 'All_Stations'}</td>
+                                        <td className="hidden lg:table-cell px-8 py-4 text-dark-500 font-light italic text-[13px]">{a.state || 'All_Stations'}</td>
                                         <td className="px-8 py-4">
                                             <SentimentBadge label={a.dominant_sentiment} />
                                         </td>
-                                        <td className="px-8 py-4">
+                                        <td className="hidden sm:table-cell px-8 py-4">
                                             <div className="flex items-center gap-1.5 text-[9px] font-mono font-bold">
                                                 <span className="text-green-600">{a.positive_count}</span>
                                                 <span className="text-chalk-300">/</span>
@@ -120,7 +120,7 @@ export default function Reports() {
                                                 {a.avg_sentiment_score > 0 ? '+' : ''}{a.avg_sentiment_score?.toFixed(3)}
                                             </span>
                                         </td>
-                                        <td className="px-8 py-4 text-dark-400 text-[10px] font-mono italic">{formatDate(a.created_at)}</td>
+                                        <td className="hidden md:table-cell px-8 py-4 text-dark-400 text-[10px] font-mono italic">{formatDate(a.created_at)}</td>
                                         <td className="px-8 py-4 text-right">
                                             <button 
                                                 onClick={() => handleDownload(a)} 

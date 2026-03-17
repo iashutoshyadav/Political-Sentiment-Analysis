@@ -138,7 +138,7 @@ export default function Analysis() {
             {result && !loading && (
                 <div className="space-y-12">
                     {/* Summary Decoded */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div className="flex flex-col gap-8">
                         <motion.div 
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -161,7 +161,7 @@ export default function Analysis() {
                                 </button>
                             </div>
 
-                            <div className="grid grid-cols-3 gap-4 mb-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                                 {[
                                     { label: 'Positive', count: result.summary?.positive, color: '#16a34a' },
                                     { label: 'Neutral', count: result.summary?.neutral, color: '#71717a' },

@@ -38,7 +38,7 @@ export default function Navbar({ onOpenAuth }) {
                     </Link>
 
                     {/* Desktop nav - Editorial spacing */}
-                    <div className="hidden md:flex items-center gap-12">
+                    <div className="hidden md:flex items-center gap-4 lg:gap-12">
                         {user && NAV_LINKS.map(({ path, label, icon }) => (
                             <Link key={path} to={path}
                                 className={`group relative py-2 flex items-center gap-2 text-[10px] uppercase font-black tracking-[0.3em] transition-all duration-300 ${

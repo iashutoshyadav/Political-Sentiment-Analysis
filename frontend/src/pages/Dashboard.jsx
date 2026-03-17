@@ -158,18 +158,18 @@ export default function Dashboard() {
                                 <thead>
                                     <tr className="border-b border-chalk-100 bg-chalk-50/30">
                                         <th className="text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Archive / Party</th>
-                                        <th className="text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Geo_State</th>
+                                        <th className="hidden lg:table-cell text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Geo_State</th>
                                         <th className="text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Dominant_Signal</th>
-                                        <th className="text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Volume</th>
+                                        <th className="hidden sm:table-cell text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Volume</th>
                                         <th className="text-left px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Decipher_Score</th>
-                                        <th className="text-right px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Log_Timestamp</th>
+                                        <th className="hidden md:table-cell text-right px-8 py-4 text-[9px] font-black text-dark-400 uppercase tracking-widest font-mono">Log_Timestamp</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {history.slice(0, 8).map(a => (
                                         <tr key={a.id} className="border-b border-chalk-50 hover:bg-[#fffbf6] transition-colors group">
                                             <td className="px-8 py-4 font-serif italic text-dark-950 group-hover:text-primary-600 transition-colors">{a.party}</td>
-                                            <td className="px-8 py-4 text-dark-500 font-light italic">{a.state || 'National Context'}</td>
+                                            <td className="hidden lg:table-cell px-8 py-4 text-dark-500 font-light italic">{a.state || 'National Context'}</td>
                                             <td className="px-8 py-4">
                                                 <div className="flex items-center gap-1.5">
                                                     <div className={`w-1 h-1 rounded-full ${
@@ -184,7 +184,7 @@ export default function Dashboard() {
                                                     </span>
                                                 </div>
                                             </td>
-                                            <td className="px-8 py-4 text-dark-800 font-mono text-[10px]">{a.total_articles} units</td>
+                                            <td className="hidden sm:table-cell px-8 py-4 text-dark-800 font-mono text-[10px]">{a.total_articles} units</td>
                                             <td className="px-8 py-4">
                                                 <span className={`font-mono text-[10px] font-bold px-2 py-1 rounded bg-[#fff7ed] border border-chalk-200 ${
                                                     a.avg_sentiment_score > 0 ? 'text-green-600' : a.avg_sentiment_score < 0 ? 'text-red-600' : 'text-dark-500'
@@ -192,7 +192,7 @@ export default function Dashboard() {
                                                     {a.avg_sentiment_score > 0 ? '+' : ''}{a.avg_sentiment_score?.toFixed(3)}
                                                 </span>
                                             </td>
-                                            <td className="px-8 py-4 text-dark-300 text-[10px] text-right font-mono italic">{formatDate(a.created_at)}</td>
+                                            <td className="hidden md:table-cell px-8 py-4 text-dark-300 text-[10px] text-right font-mono italic">{formatDate(a.created_at)}</td>
                                         </tr>
                                     ))}
                                 </tbody>

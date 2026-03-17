@@ -72,7 +72,7 @@ export default function Home({ onOpenAuth }) {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            <h1 className="text-[12vw] lg:text-[11rem] editorial-heading text-dark-950 mb-12 tracking-tighter leading-[0.8] mix-blend-multiply">
+                            <h1 className="text-[12vw] sm:text-[10vw] lg:text-[11rem] editorial-heading text-dark-950 mb-12 tracking-tighter leading-[0.8] mix-blend-multiply">
                                 Deep <br />
                                 <span className="text-primary-600">Political</span> <br />
                                 <span className="opacity-20">Architect.</span>
